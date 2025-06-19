@@ -1,0 +1,6 @@
+{
+  "appId": "com.example.offlinetodo",
+  "appName": "Offline ToDo PWA",
+  "webDir": ".",
+  "bundledWebRuntime": false
+}
