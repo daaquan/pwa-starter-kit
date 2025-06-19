@@ -23,5 +23,26 @@
 - `service-worker.js` - オフラインキャッシュ用のサービスワーカー
 - `manifest.json` - PWA 設定 (アイコンは Base64 データ URI として埋め込み)
 
+## デスクトップアプリとして実行 (Electron)
+
+Electron を利用してデスクトップアプリとして起動できます。
+
+```bash
+npm install
+npm start
+```
+
+## モバイルアプリとして実行 (Capacitor)
+
+以下のコマンドで各プラットフォーム用のプロジェクトを生成できます。
+
+```bash
+npm run copy           # Web アセットをネイティブプロジェクトへコピー
+npm run build:ios      # iOS プロジェクト生成
+npm run build:android  # Android プロジェクト生成
+```
+
+生成された `ios/` や `android/` ディレクトリでビルドや実機確認を行ってください。
+
 ## ライセンス
 MIT

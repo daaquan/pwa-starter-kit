@@ -1,0 +1,23 @@
+{
+  "name": "pwa-starter-kit",
+  "version": "1.0.0",
+  "description": "このサンプルは、ブラウザのホーム画面に追加できるシンプルな ToDo リストの PWA です。 依存ライブラリを使用せず、HTML/JavaScript/CSS だけで構成されています。",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo 'No tests'",
+    "start": "electron .",
+    "build:ios": "npx cap add ios",
+    "build:android": "npx cap add android",
+    "copy": "npx cap copy",
+    "serve": "npx http-server -p 8000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.0",
+    "@capacitor/core": "^7.4.0",
+    "electron": "^36.5.0"
+  }
+}
