@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline ToDo</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 1rem; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; align-items: center; }
+    li span { flex-grow: 1; }
+    button { margin-left: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>ToDo</h1>
+  <form id="todo-form">
+    <input id="new-todo" type="text" placeholder="新しいToDo" required>
+    <button type="submit">追加</button>
+  </form>
+  <ul id="todo-list"></ul>
+
+  <script>
+    const listEl = document.getElementById('todo-list');
+    const todos = JSON.parse(localStorage.getItem('todos') || '[]');
+
+    function save() {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    }
+
+    function render() {
+      listEl.innerHTML = '';
+      todos.forEach((t, i) => {
+        const li = document.createElement('li');
+        const span = document.createElement('span');
+        span.textContent = t;
+        const del = document.createElement('button');
+        del.textContent = '削除';
+        del.onclick = () => { todos.splice(i, 1); save(); render(); };
+        li.append(span, del);
+        listEl.appendChild(li);
+      });
+    }
+
+    document.getElementById('todo-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const input = document.getElementById('new-todo');
+      todos.push(input.value);
+      input.value = '';
+      save();
+      render();
+    });
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+
+    render();
+  </script>
+</body>
+</html>
