@@ -16,7 +16,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@capacitor/cli": "^7.4.0",
+    "@capacitor/cli": "^8.0.2",
     "@capacitor/core": "^7.4.0",
     "electron": "^36.5.0"
   }
